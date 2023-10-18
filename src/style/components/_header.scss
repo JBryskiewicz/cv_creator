@@ -1,0 +1,11 @@
+.header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 2.5rem 0 2.5rem;
+
+    &-menu {
+        display: flex;
+        gap: 3rem;
+        list-style-type: none;
+    }
+}
