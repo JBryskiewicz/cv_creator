@@ -40,7 +40,7 @@ function Information() {
       <div className="input-forms-information">
         <div className="input-sheet">
           <div>
-            <label htmlFor="name">Enter your full name: </label>
+            <label htmlFor="name">Enter your full name:</label>
             <input
               type="text"
               value={name}
@@ -49,7 +49,7 @@ function Information() {
             />
           </div>
           <div>
-            <label htmlFor="email">Enter your email: </label>
+            <label htmlFor="email">Enter your email:</label>
             <input
               type="email"
               value={email}
@@ -58,7 +58,7 @@ function Information() {
             />
           </div>
           <div>
-            <label htmlFor="phoneNumber ">Enter your phone number: </label>
+            <label htmlFor="phoneNumber ">Enter your phone number:</label>
             <input
               type="text"
               value={phoneNumber}
