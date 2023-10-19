@@ -1,12 +1,27 @@
-export const MENU_OPTIONS = ["Menu option 1", "Menu option 2", "Menu option 3"];
+import { useDispatch } from "react-redux";
+import { RESET_STATE } from "../redux/informationSlice";
+
+export const MENU_OPTIONS = ["Clear All", "Menu option 2", "Menu option 3"];
 
 function Header() {
+  const dispatch = useDispatch();
+
+  const handleButton = (option: string) => {
+    switch (option) {
+      case MENU_OPTIONS[0]:
+        dispatch(RESET_STATE());
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <header className="header">
       <ul className="header-menu" aria-labelledby="menu-header">
         {MENU_OPTIONS.map((option) => (
           <li key={option} className="header-menu-item">
-            {option}
+            <button onClick={() => handleButton(option)}>{option}</button>
           </li>
         ))}
       </ul>

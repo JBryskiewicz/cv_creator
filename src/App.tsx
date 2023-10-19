@@ -1,12 +1,13 @@
+import Information from "./components/forms/informationForm";
 import Header from "./components/header";
-import Summary from "./components/summary";
+import Summary from "./components/summary/summary";
 
 const App = () => {
   return (
     <>
       <Header />
       <main className="hero">
-        <div className="section input-forms"></div>
+        <Information />
         <Summary />
       </main>
     </>
