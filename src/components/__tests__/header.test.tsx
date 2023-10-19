@@ -1,11 +1,37 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import Header from "../header";
 import { MENU_OPTIONS } from "../header";
+import { Providers } from "../../redux/provider";
+import { store } from "../../redux/store";
+import { initialState } from "../../redux/informationSlice";
 
 describe("Header component", () => {
-  it("Renders component correctly", () => {
-    render(<Header />);
+  it("Should render component correctly", () => {
+    render(
+      <Providers>
+        <Header />
+      </Providers>
+    );
+
     const listItems = screen.getAllByRole("listitem");
     expect(listItems.length).toBe(MENU_OPTIONS.length);
+
+    for (const option of MENU_OPTIONS) {
+      const button = screen.getByText(option);
+      expect(button).toBeInTheDocument();
+    }
+  });
+
+  it("Should dispatch RESET_STATE upon clicking Clear All button", () => {
+    render(
+      <Providers>
+        <Header />
+      </Providers>
+    );
+
+    const clearAllButton = screen.getByText(MENU_OPTIONS[0]);
+    fireEvent.click(clearAllButton);
+    const information = store.getState().information;
+    expect(information).toBe(initialState);
   });
 });

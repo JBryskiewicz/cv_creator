@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Information } from "../types/types";
 
-const initialState: Information = {
+export const initialState: Information = {
   step: 1,
   name: "",
   email: "",
