@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Providers } from "../../../redux/provider";
-import InformationForm from "../../forms/informationForm";
+import InformationForm from "../../forms/InformationForm";
 
 describe("Personal information input fields component", () => {
   it("Should render input fields correctly", () => {

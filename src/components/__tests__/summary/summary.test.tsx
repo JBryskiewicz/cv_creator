@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Summary from "../../summary/summary";
+import Summary from "../../summary/Summary";
 import { Providers } from "../../../redux/provider";
 
 describe("CV sheet (summary) component", () => {

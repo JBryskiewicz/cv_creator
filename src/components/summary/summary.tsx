@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import EduSummary from "./EducationComponent";
 
 function Summary() {
   const information = useSelector((state: RootState) => state.information);
@@ -14,7 +15,7 @@ function Summary() {
       </div>
       <div>
         <h2>Education</h2>
-        <div>school description component</div>
+        <EduSummary />
       </div>
       <div>
         <h3>Working Experience</h3>

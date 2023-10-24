@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import Header from "../header";
-import { MENU_OPTIONS } from "../header";
+import Header from "../Header";
+import { MENU_OPTIONS } from "../Header";
 import { Providers } from "../../redux/provider";
 import { store } from "../../redux/store";
 import { initialState } from "../../redux/informationSlice";

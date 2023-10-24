@@ -1,0 +1,23 @@
+.education-card {
+    border: 1px solid black;
+    border-radius: .25rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+    .summary-field {
+        display: flex;
+        flex-direction: column;
+
+        p {
+            margin: 0
+        }
+
+        span {
+            margin-bottom: 1rem;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
