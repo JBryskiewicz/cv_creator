@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { Education, Information } from "../types/types";
+import { Education, Experience, Information } from "../types/types";
 
 export const initialState: Information = {
   step: 1,
@@ -7,6 +7,7 @@ export const initialState: Information = {
   email: "",
   phoneNumber: "",
   education: [],
+  experience: [],
 };
 
 const informationSlice = createSlice({
@@ -28,6 +29,9 @@ const informationSlice = createSlice({
     setEducation: (state, action: PayloadAction<Education[]>) => {
       state.education = action.payload;
     },
+    setExperience: (state, action: PayloadAction<Experience[]>) => {
+      state.experience = action.payload;
+    },
     RESET_STATE: () => initialState,
   },
 });
@@ -39,5 +43,6 @@ export const {
   setEmail,
   setPhoneNumber,
   setEducation,
+  setExperience,
   RESET_STATE,
 } = informationSlice.actions;

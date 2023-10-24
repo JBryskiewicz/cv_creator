@@ -6,7 +6,7 @@ type Props = {
 
 function EduCard({ education }: Props) {
   return (
-    <div className="education-card">
+    <div className="summary-card">
       <div className="summary-field">
         <p>Institution:</p>
         <span>{education.name}</span>

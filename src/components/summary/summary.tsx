@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import EduSummary from "./EducationComponent";
+import ExpSummary from "./ExperienceComponent";
 
 function Summary() {
   const information = useSelector((state: RootState) => state.information);
@@ -15,11 +16,19 @@ function Summary() {
       </div>
       <div>
         <h2>Education</h2>
-        <EduSummary />
+        {information.education.length ? (
+          <EduSummary />
+        ) : (
+          <div className="summary-card" />
+        )}
       </div>
       <div>
         <h3>Working Experience</h3>
-        <div>job description component</div>
+        {information.education.length ? (
+          <ExpSummary />
+        ) : (
+          <div className="summary-card" />
+        )}
       </div>
     </div>
   );

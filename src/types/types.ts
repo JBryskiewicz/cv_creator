@@ -4,6 +4,7 @@ export type Information = {
   email: string;
   phoneNumber: string;
   education: Education[];
+  experience: Experience[];
 };
 
 export type Education = {
@@ -11,3 +12,5 @@ export type Education = {
   period: string;
   description: string;
 };
+
+export interface Experience extends Education {}
