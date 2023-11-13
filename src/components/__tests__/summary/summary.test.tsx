@@ -1,8 +1,14 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import Summary from "../../summary/Summary";
 import { Providers } from "../../../redux/provider";
+import { useDispatch } from "react-redux";
+import {
+  setName,
+  setEmail,
+  setPhoneNumber,
+} from "../../../redux/informationSlice";
 
-describe("CV sheet (summary) component", () => {
+describe("CV sheet - summary component", () => {
   it("Should render personal information component correctly", () => {
     render(
       <Providers>

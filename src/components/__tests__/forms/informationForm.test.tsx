@@ -1,26 +1,44 @@
 import { render, screen } from "@testing-library/react";
 import { Providers } from "../../../redux/provider";
 import InformationForm from "../../forms/InformationForm";
+import { renderWithProviders } from "../../../redux/redux-test-utils";
+import { Information } from "../../../types/types";
 
 describe("Personal information input fields component", () => {
   it("Should render input fields correctly", () => {
-    render(
+    const initialState: Information = {
+      name: "TestName",
+      step: 0,
+      email: "testMail@.com",
+      phoneNumber: "123456789",
+      education: [],
+      experience: [],
+    };
+    renderWithProviders(<InformationForm />, {
+      preloadedState: { information: initialState },
+    });
+
+    const nameElement = screen.getByDisplayValue(initialState.name);
+    expect(nameElement).toBeInTheDocument();
+
+    const emailElement = screen.getByDisplayValue(initialState.email);
+    expect(emailElement).toBeInTheDocument();
+
+    const phoneNumberElement = screen.getByDisplayValue(
+      initialState.phoneNumber
+    );
+    expect(phoneNumberElement).toBeInTheDocument();
+
+    const buttonElement = screen.getByRole("button");
+    expect(buttonElement).toBeInTheDocument();
+  });
+
+  it("Should be able to set information from input fields", () => {
+    renderWithProviders(
       <Providers>
         <InformationForm />
       </Providers>
     );
-
-    const nameBoxElement = screen.getByText("Enter your full name:");
-    expect(nameBoxElement).toBeInTheDocument();
-
-    const emailBoxElement = screen.getByText("Enter your email:");
-    expect(emailBoxElement).toBeInTheDocument();
-
-    const phoneBoxElement = screen.getByText("Enter your phone number:");
-    expect(phoneBoxElement).toBeInTheDocument();
-
-    const buttonElement = screen.getByRole("button");
-    expect(buttonElement).toBeInTheDocument();
   });
 
   //TODO: Test input change that works with current implementation

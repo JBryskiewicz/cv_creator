@@ -1,4 +1,4 @@
-import Header from "./components/Header";
+import Header from "./components/header/Header";
 import Information from "./components/forms/InformationForm";
 import Education from "./components/forms/EducationForm";
 import Summary from "./components/summary/Summary";

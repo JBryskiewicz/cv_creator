@@ -1,9 +1,9 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import Header from "../Header";
-import { MENU_OPTIONS } from "../Header";
-import { Providers } from "../../redux/provider";
-import { store } from "../../redux/store";
-import { initialState } from "../../redux/informationSlice";
+import Header from "../../header/Header";
+import { MENU_OPTIONS } from "../../header/Header";
+import { Providers } from "../../../redux/provider";
+import { store } from "../../../redux/store";
+import { initialState } from "../../../redux/informationSlice";
 
 describe("Header component", () => {
   it("Should render component correctly", () => {

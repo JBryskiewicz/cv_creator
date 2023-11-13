@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
-import { RESET_STATE } from "../redux/informationSlice";
+import { RESET_STATE } from "../../redux/informationSlice";
 
-export const MENU_OPTIONS = ["Clear All", "Save CV", "Print to PDF"];
+export const MENU_OPTIONS = ["Clear All", "Save CV", "Load CV"];
 
 function Header() {
   const dispatch = useDispatch();
