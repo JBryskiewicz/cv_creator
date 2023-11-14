@@ -1,19 +1,19 @@
 .hero {
-    display: flex;
-    justify-content: space-around;
-    padding: 0 1.5rem 0 .5rem;
+	display: flex;
+	justify-content: space-around;
+	padding: 0 1.5rem 0 0.5rem;
 
-    .section {
-        width: 45vw;
-        height: 90vh;
-        border: 1px solid black;
-        border-radius: .25rem;
-        padding: 0 1.5rem 1.5rem 1.5rem;
-        margin-left: 1rem;
+	.section {
+		width: 45vw;
+		height: 90vh;
+		border: 1px solid black;
+		border-radius: 0.25rem;
+		padding: 0 1.5rem 1.5rem 1.5rem;
+		margin-left: 1rem;
 
-        &:last-of-type {
-            overflow-y: scroll;
-            overflow-x: hidden;
-        }
-    }
+		&:last-of-type {
+			overflow-y: scroll;
+			overflow-x: hidden;
+		}
+	}
 }

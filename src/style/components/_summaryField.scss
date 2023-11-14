@@ -1,30 +1,30 @@
 .summary {
-    p {
-        overflow-wrap: break-word; 
-    }
+	p {
+		overflow-wrap: break-word;
+	}
 }
 
 .summary-card {
-    border: 1px solid black;
-    border-radius: .25rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
+	border: 1px solid black;
+	border-radius: 0.25rem;
+	padding: 1rem;
+	margin-bottom: 1rem;
 
-    .summary-field {
-        display: flex;
-        flex-direction: column;
+	.summary-field {
+		display: flex;
+		flex-direction: column;
 
-        p {
-            margin: 0
-        }
+		p {
+			margin: 0;
+		}
 
-        span {
-            overflow-wrap: break-word;
-            margin-bottom: 1rem;
+		span {
+			overflow-wrap: break-word;
+			margin-bottom: 1rem;
 
-            &:last-of-type {
-                margin-bottom: 0;
-            }
-        }
-    }
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+	}
 }

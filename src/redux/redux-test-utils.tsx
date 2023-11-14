@@ -10,35 +10,35 @@ import informationReducer, { initialState } from "./informationSlice";
 import { Information } from "../types/types";
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
-  preloadedState?: PreloadedState<RootState>;
-  store?: Store;
+	state?: Partial<Information>;
 }
 
 export function renderWithProviders(
-  ui: React.ReactElement,
-  {
-    preloadedState = {
-      information: { ...initialState },
-    },
-    // Automatically create a store instance if no store was passed in
-    store = configureStore({
-      reducer: { information: informationReducer },
-      preloadedState,
-    }),
-    ...renderOptions
-  }: ExtendedRenderOptions = {}
+	ui: React.ReactElement,
+	{ state = undefined, ...renderOptions }: ExtendedRenderOptions = {}
 ) {
-  function Wrapper({ children }: PropsWithChildren<{}>): JSX.Element {
-    return <Provider store={store}>{children}</Provider>;
-  }
+	const information: Information = { ...initialState, ...state };
+	const preloadedState: PreloadedState<RootState> = {
+		information,
+	};
 
-  // Return an object with the store and all of RTL's query functions
-  return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
+	// Automatically create a store instance if no store was passed in
+	const store = configureStore({
+		reducer: { information: informationReducer },
+		preloadedState,
+	});
+
+	function Wrapper({ children }: PropsWithChildren<{}>): JSX.Element {
+		return <Provider store={store}>{children}</Provider>;
+	}
+
+	// Return an object with the store and all of RTL's query functions
+	return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
 }
 
 export function setupTestStore(initialState: Partial<Information>) {
-  return configureStore({
-    reducer: { information: informationReducer },
-    preloadedState: { information: { ...initialState } as Information },
-  });
+	return configureStore({
+		reducer: { information: informationReducer },
+		preloadedState: { information: { ...initialState } as Information },
+	});
 }

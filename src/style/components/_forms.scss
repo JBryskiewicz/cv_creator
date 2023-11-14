@@ -1,46 +1,45 @@
 .input-forms {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
-    &-information {
-        width: 100%;
-        max-width: 100%;
-        min-height: 16rem;
-        border: 1px solid black;
-        border-radius: .25rem;
-        margin-top: 1.5rem;
+	&-information {
+		width: 100%;
+		max-width: 100%;
+		min-height: 16rem;
+		border: 1px solid black;
+		border-radius: 0.25rem;
+		margin-top: 1.5rem;
 
-        .input-sheet {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            padding: 0 1.5rem 1.5rem 1.5rem;
+		.input-sheet {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			padding: 0 1.5rem 1.5rem 1.5rem;
 
-            div {
-                display: flex;
-                flex-direction: column;
-                margin-top: 1rem;
-            }
+			div {
+				display: flex;
+				flex-direction: column;
+				margin-top: 1rem;
+			}
 
-            textarea {
-                min-height: 20rem;
-                max-height: 37rem;
-                resize: vertical;
-            }
+			textarea {
+				min-height: 20rem;
+				max-height: 37rem;
+				resize: vertical;
+			}
 
-            .button-box {
-                flex-direction: row;
-                justify-content: flex-end;
-                gap: 1rem;
+			.button-box {
+				flex-direction: row;
+				justify-content: flex-end;
+				gap: 1rem;
 
-                button {
-                    align-self: flex-end;
-                    width: 5rem;
-                    margin-top: 1rem;
-                }
-            }
-            
-        }
-    }
+				button {
+					align-self: flex-end;
+					width: 5rem;
+					margin-top: 1rem;
+				}
+			}
+		}
+	}
 }

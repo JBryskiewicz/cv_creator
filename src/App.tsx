@@ -1,4 +1,4 @@
-import Header, { MENU_OPTIONS } from "./components/header/Header";
+import Header from "./components/header/Header";
 import Information from "./components/forms/InformationForm";
 import Education from "./components/forms/EducationForm";
 import Summary from "./components/summary/Summary";
@@ -8,37 +8,37 @@ import Experience from "./components/forms/ExperienceForm";
 import { RESET_STATE } from "./redux/informationSlice";
 
 const App = () => {
-  const { step } = useSelector((state: RootState) => state.information);
-  const dispatch = useDispatch();
+	const { step } = useSelector((state: RootState) => state.information);
+	const dispatch = useDispatch();
 
-  return (
-    <>
-      <Header
-        clearAllCallback={() => dispatch(RESET_STATE())}
-        loadCVCallback={() => {
-          throw new Error("Method not implemented.");
-        }}
-        saveCVCallback={() => {
-          throw new Error("Method not implemented.");
-        }}
-      />
-      <main className="hero">
-        {(() => {
-          switch (step) {
-            case 1:
-              return <Information />;
-            case 2:
-              return <Education />;
-            case 3:
-              return <Experience />;
-            default:
-              return <Information />;
-          }
-        })()}
-        <Summary />
-      </main>
-    </>
-  );
+	return (
+		<>
+			<Header
+				clearAllCallback={() => dispatch(RESET_STATE())}
+				loadCVCallback={() => {
+					throw new Error("Method not implemented.");
+				}}
+				saveCVCallback={() => {
+					throw new Error("Method not implemented.");
+				}}
+			/>
+			<main className="hero">
+				{(() => {
+					switch (step) {
+						case 1:
+							return <Information />;
+						case 2:
+							return <Education />;
+						case 3:
+							return <Experience />;
+						default:
+							return <Information />;
+					}
+				})()}
+				<Summary />
+			</main>
+		</>
+	);
 };
 
 export default App;
