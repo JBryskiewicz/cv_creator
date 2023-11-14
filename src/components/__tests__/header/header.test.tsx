@@ -32,6 +32,6 @@ describe("Header component", () => {
     const clearAllButton = screen.getByText(MENU_OPTIONS[0]);
     fireEvent.click(clearAllButton);
     const information = store.getState().information;
-    expect(information).toBe(initialState);
+    expect(information).toEqual(initialState);
   });
 });

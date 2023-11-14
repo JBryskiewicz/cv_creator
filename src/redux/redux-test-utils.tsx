@@ -18,7 +18,7 @@ export function renderWithProviders(
   ui: React.ReactElement,
   {
     preloadedState = {
-      information: initialState,
+      information: { ...initialState },
     },
     // Automatically create a store instance if no store was passed in
     store = configureStore({
@@ -39,6 +39,6 @@ export function renderWithProviders(
 export function setupTestStore(initialState: Partial<Information>) {
   return configureStore({
     reducer: { information: informationReducer },
-    preloadedState: { information: initialState as Information },
+    preloadedState: { information: { ...initialState } as Information },
   });
 }

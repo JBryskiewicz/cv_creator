@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { Action, PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Education, Experience, Information } from "../types/types";
 
 export const initialState: Information = {
@@ -32,7 +32,9 @@ const informationSlice = createSlice({
     setExperience: (state, action: PayloadAction<Experience[]>) => {
       state.experience = action.payload;
     },
-    RESET_STATE: () => initialState,
+    RESET_STATE: (state, action: Action) => {
+      return initialState;
+    },
   },
 });
 
