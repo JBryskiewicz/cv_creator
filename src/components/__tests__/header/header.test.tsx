@@ -1,17 +1,30 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import Header from "../../header/Header";
 import { MENU_OPTIONS } from "../../header/Header";
-import { Providers } from "../../../redux/provider";
-import { store } from "../../../redux/store";
-import { initialState } from "../../../redux/informationSlice";
+import { renderWithProviders } from "../../../redux/redux-test-utils";
 
 describe("Header component", () => {
+  const renderHeader = () => {
+    const mockClearAll = jest.fn();
+    const mockSave = jest.fn();
+    const mockLoad = jest.fn();
+
+    return {
+      mockClearAll,
+      mockSave,
+      mockLoad,
+      ...renderWithProviders(
+        <Header
+          clearAllCallback={mockClearAll}
+          saveCVCallback={mockSave}
+          loadCVCallback={mockLoad}
+        />
+      ),
+    };
+  };
+
   it("Should render component correctly", () => {
-    render(
-      <Providers>
-        <Header />
-      </Providers>
-    );
+    renderHeader();
 
     const listItems = screen.getAllByRole("listitem");
     expect(listItems.length).toBe(MENU_OPTIONS.length);
@@ -22,16 +35,19 @@ describe("Header component", () => {
     }
   });
 
-  it("Should dispatch RESET_STATE upon clicking Clear All button", () => {
-    render(
-      <Providers>
-        <Header />
-      </Providers>
-    );
+  it("Buttons should work correctly", () => {
+    const { mockClearAll, mockSave, mockLoad } = renderHeader();
 
     const clearAllButton = screen.getByText(MENU_OPTIONS[0]);
-    fireEvent.click(clearAllButton);
-    const information = store.getState().information;
-    expect(information).toEqual(initialState);
+    clearAllButton.click();
+    expect(mockClearAll).toHaveBeenCalled();
+
+    const saveButton = screen.getByText(MENU_OPTIONS[1]);
+    saveButton.click();
+    expect(mockSave).toHaveBeenCalled();
+
+    const loadButton = screen.getByText(MENU_OPTIONS[2]);
+    loadButton.click();
+    expect(mockLoad).toHaveBeenCalled();
   });
 });
