@@ -1,11 +1,12 @@
-import { ChangeEventHandler } from "react";
+import { ChangeEvent, EventHandler } from "react";
 
-type FormElementProps = {
+export type FormElementProps = {
 	labelText: string;
 	value: string;
 	labelId: string;
 	placeholder?: string;
-	onChangeHandler: ChangeEventHandler<HTMLInputElement>;
+	type?: "text" | "textarea";
+	onChangeHandler: EventHandler<ChangeEvent<{ value: string }>>;
 };
 
 export function FormElement({
@@ -13,12 +14,24 @@ export function FormElement({
 	labelId,
 	value,
 	placeholder = "",
+	type = "text",
 	onChangeHandler,
 }: FormElementProps): JSX.Element {
 	return (
 		<div>
 			<label htmlFor={labelId}>{labelText}</label>
-			<input type="text" value={value} id={labelId} placeholder={placeholder} onChange={onChangeHandler} />
+			{type === "text" ? (
+				<input
+					type="text"
+					name={labelId}
+					value={value}
+					id={labelId}
+					placeholder={placeholder}
+					onChange={onChangeHandler}
+				/>
+			) : (
+				<textarea name={labelId} value={value} id={labelId} placeholder={placeholder} onChange={onChangeHandler} />
+			)}
 		</div>
 	);
 }

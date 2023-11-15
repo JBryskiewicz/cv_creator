@@ -1,5 +1,5 @@
 import { fireEvent, screen } from "@testing-library/react";
-import InformationForm from "../../forms/InformationForm";
+import { InformationForm } from "../../forms/InformationForm";
 import { renderWithProviders } from "../../../redux/redux-test-utils";
 
 describe("Personal information input fields component", () => {

@@ -1,3 +1,5 @@
+import { FormElementProps } from "../components/forms/FormElement";
+
 export type Information = {
 	step: number;
 	name: string;
@@ -14,3 +16,9 @@ export type Education = {
 };
 
 export interface Experience extends Education {}
+
+export type FormElementSubmitData = {
+	[key: string]: string;
+};
+
+export type FormElementSubmitHandler = (data: FormElementSubmitData) => void;

@@ -1,10 +1,10 @@
 import Header from "./components/header/Header";
-import Information from "./components/forms/InformationForm";
-import Education from "./components/forms/EducationForm";
 import Summary from "./components/summary/Summary";
 import { RootState } from "./redux/store";
 import { useDispatch, useSelector } from "react-redux";
-import Experience from "./components/forms/ExperienceForm";
+import { InformationForm } from "./components/forms/InformationForm";
+import { EducationForm } from "./components/forms/EducationForm";
+import { ExperienceForm } from "./components/forms/ExperienceForm";
 import { setStep, RESET_STATE } from "./redux/informationSlice";
 
 const App = () => {
@@ -26,13 +26,13 @@ const App = () => {
 				{(() => {
 					switch (step) {
 						case 1:
-							return <Information nextStep={() => dispatch(setStep(2))} />;
+							return <InformationForm nextStep={() => dispatch(setStep(2))} />;
 						case 2:
-							return <Education />;
+							return <EducationForm nextStep={() => dispatch(setStep(3))} previousStep={() => dispatch(setStep(1))} />;
 						case 3:
-							return <Experience />;
+							return <ExperienceForm previousStep={() => dispatch(setStep(2))} />;
 						default:
-							return <Information nextStep={() => dispatch(setStep(2))} />;
+							return <InformationForm nextStep={() => dispatch(setStep(2))} />;
 					}
 				})()}
 				<Summary />
