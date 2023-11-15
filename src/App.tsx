@@ -5,7 +5,7 @@ import Summary from "./components/summary/Summary";
 import { RootState } from "./redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import Experience from "./components/forms/ExperienceForm";
-import { RESET_STATE } from "./redux/informationSlice";
+import { setStep, RESET_STATE } from "./redux/informationSlice";
 
 const App = () => {
 	const { step } = useSelector((state: RootState) => state.information);
@@ -26,13 +26,13 @@ const App = () => {
 				{(() => {
 					switch (step) {
 						case 1:
-							return <Information />;
+							return <Information nextStep={() => dispatch(setStep(2))} />;
 						case 2:
 							return <Education />;
 						case 3:
 							return <Experience />;
 						default:
-							return <Information />;
+							return <Information nextStep={() => dispatch(setStep(2))} />;
 					}
 				})()}
 				<Summary />

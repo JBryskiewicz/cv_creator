@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { setStep, setName, setEmail, setPhoneNumber } from "../../redux/informationSlice";
+import { setName, setEmail, setPhoneNumber } from "../../redux/informationSlice";
 import { FormElement } from "./FormElement";
 
-function Information() {
+type InformationFormProps = {
+	nextStep: () => void;
+};
+
+function Information({ nextStep }: InformationFormProps) {
 	const { name, email, phoneNumber } = useSelector((state: RootState) => state.information);
 	const dispatch = useDispatch();
-
-	const handleButton = (step: number) => {
-		dispatch(setStep(step));
-	};
 
 	return (
 		<div className="section input-forms">
@@ -34,7 +34,7 @@ function Information() {
 						onChangeHandler={(event) => dispatch(setPhoneNumber(event.target.value))}
 					/>
 					<div className="button-box">
-						<button onClick={() => handleButton(2)}>Next</button>
+						<button onClick={nextStep}>Next</button>
 					</div>
 				</div>
 			</div>

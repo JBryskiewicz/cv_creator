@@ -1,6 +1,3 @@
-import { useDispatch } from "react-redux";
-import { RESET_STATE } from "../../redux/informationSlice";
-
 export const MENU_OPTIONS = ["Clear All", "Save CV", "Load CV"];
 
 type HeaderProps = {

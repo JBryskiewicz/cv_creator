@@ -1,37 +1,38 @@
-import { screen } from "@testing-library/react";
-import { Providers } from "../../../redux/provider";
+import { fireEvent, screen } from "@testing-library/react";
 import InformationForm from "../../forms/InformationForm";
 import { renderWithProviders } from "../../../redux/redux-test-utils";
-import { Information } from "../../../types/types";
 
 describe("Personal information input fields component", () => {
-	it("Should render input fields correctly", () => {
-		const initialState: Information = {
-			name: "TestName",
-			step: 0,
-			email: "testMail@.com",
-			phoneNumber: "123456789",
-			education: [],
-			experience: [],
+	const renderInfoForm = () => {
+		const nextStep = jest.fn();
+
+		return {
+			nextStep,
+			...renderWithProviders(<InformationForm nextStep={nextStep} />),
 		};
-		renderWithProviders(<InformationForm />, {
-			state: initialState,
-		});
+	};
 
-		const nameElement = screen.getByDisplayValue(initialState.name);
-		expect(nameElement).toBeInTheDocument();
+	it("Should render working next step button", () => {
+		const { nextStep } = renderInfoForm();
 
-		const emailElement = screen.getByDisplayValue(initialState.email);
-		expect(emailElement).toBeInTheDocument();
-
-		const phoneNumberElement = screen.getByDisplayValue(initialState.phoneNumber);
-		expect(phoneNumberElement).toBeInTheDocument();
-
-		const buttonElement = screen.getByRole("button");
-		expect(buttonElement).toBeInTheDocument();
+		const buttonElement = screen.getByRole("button", { name: "Next" });
+		buttonElement.click();
+		expect(nextStep).toHaveBeenCalled();
 	});
 
-	it("Should be able to set information from input fields", () => {
-		renderWithProviders(<InformationForm />);
+	it("Should modify store on entering text in input fields", () => {
+		const { store } = renderInfoForm();
+
+		const nameInput = screen.getByLabelText("Enter your full name:");
+		fireEvent.change(nameInput, { target: { value: "name test" } });
+		expect(store.getState().information.name).toEqual("name test");
+
+		const emailInput = screen.getByLabelText("Enter your email:");
+		fireEvent.change(emailInput, { target: { value: "email test" } });
+		expect(store.getState().information.email).toEqual("email test");
+
+		const numberInput = screen.getByLabelText("Enter your phone number:");
+		fireEvent.change(numberInput, { target: { value: "number test" } });
+		expect(store.getState().information.phoneNumber).toEqual("number test");
 	});
 });
