@@ -1,5 +1,3 @@
-import { FormElementProps } from "../components/forms/FormElement";
-
 export type Information = {
 	step: number;
 	name: string;

@@ -4,16 +4,23 @@
 	padding: 0 1.5rem 0 0.5rem;
 
 	.section {
+		background-color: rgba(255,255,255, .85);
+	}
+
+	.section {
 		width: 45vw;
-		height: 90vh;
-		border: 1px solid black;
-		border-radius: 0.25rem;
+		height: 85vh;
 		padding: 0 1.5rem 1.5rem 1.5rem;
 		margin-left: 1rem;
+		margin-top: 1rem;
 
 		&:last-of-type {
 			overflow-y: scroll;
 			overflow-x: hidden;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
 		}
 	}
 }

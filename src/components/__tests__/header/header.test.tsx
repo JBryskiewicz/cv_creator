@@ -6,16 +6,12 @@ import { renderWithProviders } from "../../../redux/redux-test-utils";
 describe("Header component", () => {
 	const renderHeader = () => {
 		const mockClearAll = jest.fn();
-		const mockSave = jest.fn();
-		const mockLoad = jest.fn();
+		const mockPrint = jest.fn();
 
 		return {
 			mockClearAll,
-			mockSave,
-			mockLoad,
-			...renderWithProviders(
-				<Header clearAllCallback={mockClearAll} saveCVCallback={mockSave} loadCVCallback={mockLoad} />
-			),
+			mockPrint,
+			...renderWithProviders(<Header clearAllCallback={mockClearAll} pdfPrintCallback={mockPrint} />),
 		};
 	};
 
@@ -32,7 +28,7 @@ describe("Header component", () => {
 	});
 
 	it("Buttons should work correctly", () => {
-		const { mockClearAll, mockSave, mockLoad } = renderHeader();
+		const { mockClearAll, mockPrint } = renderHeader();
 
 		const clearAllButton = screen.getByText(MENU_OPTIONS[0]);
 		clearAllButton.click();
@@ -40,10 +36,6 @@ describe("Header component", () => {
 
 		const saveButton = screen.getByText(MENU_OPTIONS[1]);
 		saveButton.click();
-		expect(mockSave).toHaveBeenCalled();
-
-		const loadButton = screen.getByText(MENU_OPTIONS[2]);
-		loadButton.click();
-		expect(mockLoad).toHaveBeenCalled();
+		expect(mockPrint).toHaveBeenCalled();
 	});
 });

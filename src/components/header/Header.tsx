@@ -1,26 +1,28 @@
-export const MENU_OPTIONS = ["Clear All", "Save CV", "Load CV"];
+import { AppBar, Button } from "@mui/material";
+
+export const MENU_OPTIONS = ["Clear All", "Print PDF"];
 
 type HeaderProps = {
 	clearAllCallback: () => void;
-	saveCVCallback: () => void;
-	loadCVCallback: () => void;
+	pdfPrintCallback: () => void;
 };
 
-function Header({ clearAllCallback, saveCVCallback, loadCVCallback }: HeaderProps) {
+function Header({ clearAllCallback, pdfPrintCallback }: HeaderProps) {
 	return (
-		<header className="header">
+		<AppBar sx={{ backgroundColor: "transparent", position: "static" }}>
 			<ul className="header-menu" aria-labelledby="menu-header">
 				<li key={MENU_OPTIONS[0]} className={"header-menu-item"}>
-					<button onClick={clearAllCallback}>{MENU_OPTIONS[0]}</button>
+					<Button variant="contained" onClick={clearAllCallback}>
+						{MENU_OPTIONS[0]}
+					</Button>
 				</li>
 				<li key={MENU_OPTIONS[1]} className={"header-menu-item"}>
-					<button onClick={saveCVCallback}>{MENU_OPTIONS[1]}</button>
-				</li>
-				<li key={MENU_OPTIONS[2]} className={"header-menu-item"}>
-					<button onClick={loadCVCallback}>{MENU_OPTIONS[2]}</button>
+					<Button variant="contained" onClick={pdfPrintCallback}>
+						{MENU_OPTIONS[1]}
+					</Button>
 				</li>
 			</ul>
-		</header>
+		</AppBar>
 	);
 }
 

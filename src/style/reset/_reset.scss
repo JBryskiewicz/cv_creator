@@ -11,6 +11,9 @@
 html {
 	line-height: 1.15; /* 1 */
 	-webkit-text-size-adjust: 100%; /* 2 */
+   height: 100vh;
+   background: no-repeat url("../../resources/Wave.svg");
+   background-size: cover;
 }
 
 /* Sections

@@ -4,6 +4,7 @@ import { RootState } from "../../redux/store";
 import { setExperience } from "../../redux/informationSlice";
 import { FormElementProps } from "./FormElement";
 import { Form } from "./Form";
+import { formHeaders } from "../../utils/library";
 
 type ExperienceFormProps = {
 	previousStep: () => void;
@@ -13,6 +14,7 @@ export function ExperienceForm({ previousStep }: ExperienceFormProps) {
 	const [name, setName] = useState<string>("");
 	const [date, setDate] = useState<string>("");
 	const [desc, setDesc] = useState<string>("");
+	const { stepThree } = formHeaders;
 	const { experience } = useSelector((state: RootState) => state.information);
 	const dispatch = useDispatch();
 
@@ -59,5 +61,12 @@ export function ExperienceForm({ previousStep }: ExperienceFormProps) {
 		},
 	];
 
-	return <Form formElements={formElements} previousButtonHandler={previousStep} saveButtonHandler={handleSaveButton} />;
+	return (
+		<Form
+			formElements={formElements}
+			previousButtonHandler={previousStep}
+			saveButtonHandler={handleSaveButton}
+			formHeader={stepThree}
+		/>
+	);
 }

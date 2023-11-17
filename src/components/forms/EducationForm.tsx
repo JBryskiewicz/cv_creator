@@ -4,6 +4,7 @@ import { setEducation } from "../../redux/informationSlice";
 import { RootState } from "../../redux/store";
 import { FormElementProps } from "./FormElement";
 import { Form } from "./Form";
+import { formHeaders } from "../../utils/library";
 
 type EducationFormProps = {
 	nextStep: () => void;
@@ -14,6 +15,7 @@ export function EducationForm({ nextStep, previousStep }: EducationFormProps) {
 	const [name, setName] = useState<string>("");
 	const [date, setDate] = useState<string>("");
 	const [desc, setDesc] = useState<string>("");
+	const { stepTwo } = formHeaders;
 	const { education } = useSelector((state: RootState) => state.information);
 	const dispatch = useDispatch();
 
@@ -66,6 +68,7 @@ export function EducationForm({ nextStep, previousStep }: EducationFormProps) {
 			nextButtonHandler={nextStep}
 			previousButtonHandler={previousStep}
 			saveButtonHandler={handleSaveButton}
+			formHeader={stepTwo}
 		/>
 	);
 }

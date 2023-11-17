@@ -3,6 +3,7 @@ import { RootState } from "../../redux/store";
 import { setName, setEmail, setPhoneNumber } from "../../redux/informationSlice";
 import { FormElementProps } from "./FormElement";
 import { Form } from "./Form";
+import { formHeaders } from "../../utils/library";
 
 type InformationFormProps = {
 	nextStep: () => void;
@@ -11,6 +12,7 @@ type InformationFormProps = {
 export function InformationForm({ nextStep }: InformationFormProps) {
 	const { name, email, phoneNumber } = useSelector((state: RootState) => state.information);
 	const dispatch = useDispatch();
+	const { stepOne } = formHeaders;
 
 	const formElements: FormElementProps[] = [
 		{
@@ -36,5 +38,5 @@ export function InformationForm({ nextStep }: InformationFormProps) {
 		},
 	];
 
-	return <Form formElements={formElements} nextButtonHandler={nextStep} />;
+	return <Form formElements={formElements} nextButtonHandler={nextStep} formHeader={stepOne} />;
 }

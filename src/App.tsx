@@ -15,10 +15,7 @@ const App = () => {
 		<>
 			<Header
 				clearAllCallback={() => dispatch(RESET_STATE())}
-				loadCVCallback={() => {
-					throw new Error("Method not implemented.");
-				}}
-				saveCVCallback={() => {
+				pdfPrintCallback={() => {
 					throw new Error("Method not implemented.");
 				}}
 			/>

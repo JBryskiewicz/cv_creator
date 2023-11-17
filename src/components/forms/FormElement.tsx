@@ -1,3 +1,4 @@
+import { TextField } from "@mui/material";
 import { ChangeEvent, EventHandler } from "react";
 
 export type FormElementProps = {
@@ -19,11 +20,11 @@ export function FormElement({
 }: FormElementProps): JSX.Element {
 	return (
 		<div>
-			<label htmlFor={labelId}>{labelText}</label>
 			{type === "text" ? (
-				<input
+				<TextField
 					type="text"
-					name={labelId}
+					label={labelText}
+					variant="outlined"
 					value={value}
 					id={labelId}
 					placeholder={placeholder}
