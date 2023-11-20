@@ -1,9 +1,35 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import Summary from "../../summary/Summary";
 import { renderWithProviders } from "../../../redux/redux-test-utils";
 import ExpEduSharedComponent from "../../summary/ExpEduSharedComponent";
+import ExpEduSharedCard from "../../summary/ExpEduSharedCard";
+import { Education } from "../../../types/types";
 
 describe("CV sheet - summary component", () => {
+	const renderSummaryCard = () => {
+		const mockEditButton = jest.fn();
+		const mockDeleteButton = jest.fn();
+
+		const mockCollection: Education = {
+			type: "edu",
+			name: "testEdu",
+			period: "03.21.2023",
+			description: "testDesc",
+		};
+
+		return {
+			mockEditButton,
+			mockDeleteButton,
+			...renderWithProviders(
+				<ExpEduSharedCard
+					data={mockCollection}
+					editButtonHandler={mockEditButton}
+					deleteButtonHandler={mockDeleteButton}
+				/>
+			),
+		};
+	};
+
 	it("Should render personal information component correctly", () => {
 		const mockData = {
 			name: "test",
@@ -36,7 +62,7 @@ describe("CV sheet - summary component", () => {
 			],
 		};
 
-		render(<ExpEduSharedComponent dataCollection={mockData.education} />);
+		renderWithProviders(<ExpEduSharedComponent dataCollection={mockData.education} />);
 
 		const institutionSummary = screen.getByText(mockData.education[0].name);
 		expect(institutionSummary).toBeInTheDocument();
@@ -57,7 +83,7 @@ describe("CV sheet - summary component", () => {
 			],
 		};
 
-		render(<ExpEduSharedComponent dataCollection={mockData.experince} />);
+		renderWithProviders(<ExpEduSharedComponent dataCollection={mockData.experince} />);
 
 		const institutionSummary = screen.getByText(mockData.experince[0].name);
 		expect(institutionSummary).toBeInTheDocument();
@@ -65,5 +91,17 @@ describe("CV sheet - summary component", () => {
 		expect(periodSummary).toBeInTheDocument();
 		const descriptionSummary = screen.getByText(mockData.experince[0].description);
 		expect(descriptionSummary).toBeInTheDocument();
+	});
+
+	it("Should render working edit & delete buttons for summary card", () => {
+		const { mockEditButton, mockDeleteButton } = renderSummaryCard();
+
+		const editButton = screen.getByText("Edit");
+		editButton.click();
+		expect(mockEditButton).toHaveBeenCalled();
+
+		const deleteButton = screen.getByText("Delete");
+		deleteButton.click();
+		expect(mockDeleteButton).toHaveBeenCalled();
 	});
 });

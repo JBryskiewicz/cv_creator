@@ -27,6 +27,7 @@ export function EducationForm({ nextStep, previousStep }: EducationFormProps) {
 					name: name,
 					period: date,
 					description: desc,
+					type: "edu",
 				},
 			])
 		);

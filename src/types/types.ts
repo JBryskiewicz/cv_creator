@@ -7,13 +7,15 @@ export type Information = {
 	experience: Experience[];
 };
 
-export type Education = {
+export type Experience = {
 	name: string;
 	period: string;
 	description: string;
 };
 
-export interface Experience extends Education {}
+export interface Education extends Experience {
+	type: "edu";
+}
 
 export type FormElementSubmitData = {
 	[key: string]: string;
