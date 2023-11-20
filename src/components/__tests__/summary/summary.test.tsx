@@ -6,9 +6,10 @@ import ExpEduSharedCard from "../../summary/ExpEduSharedCard";
 import { Education } from "../../../types/types";
 
 describe("CV sheet - summary component", () => {
-	const renderSummaryCard = () => {
+	const renderSummaryCard = (name: string) => {
 		const mockEditButton = jest.fn();
 		const mockDeleteButton = jest.fn();
+		const mockSaveButton = jest.fn();
 
 		const mockCollection: Education = {
 			type: "edu",
@@ -20,11 +21,14 @@ describe("CV sheet - summary component", () => {
 		return {
 			mockEditButton,
 			mockDeleteButton,
+			mockSaveButton,
 			...renderWithProviders(
 				<ExpEduSharedCard
 					data={mockCollection}
+					editableName={name}
 					editButtonHandler={mockEditButton}
 					deleteButtonHandler={mockDeleteButton}
+					saveButtonHandler={mockSaveButton}
 				/>
 			),
 		};
@@ -94,7 +98,7 @@ describe("CV sheet - summary component", () => {
 	});
 
 	it("Should render working edit & delete buttons for summary card", () => {
-		const { mockEditButton, mockDeleteButton } = renderSummaryCard();
+		const { mockEditButton, mockDeleteButton } = renderSummaryCard("");
 
 		const editButton = screen.getByText("Edit");
 		editButton.click();
@@ -103,5 +107,13 @@ describe("CV sheet - summary component", () => {
 		const deleteButton = screen.getByText("Delete");
 		deleteButton.click();
 		expect(mockDeleteButton).toHaveBeenCalled();
+	});
+
+	it("Should render working ssave button for summary card", () => {
+		const { mockSaveButton } = renderSummaryCard("testEdu");
+
+		const saveButton = screen.getByText("Save");
+		saveButton.click();
+		expect(mockSaveButton).toHaveBeenCalled();
 	});
 });
