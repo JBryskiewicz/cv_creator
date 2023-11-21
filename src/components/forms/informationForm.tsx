@@ -30,7 +30,7 @@ export function InformationForm({ nextStep }: InformationFormProps) {
 			onChangeHandler: (event) => dispatch(setEmail(event.target.value)),
 		},
 		{
-			labelText: "Enter your phone number:",
+			labelText: "Enter your phone number: (123-456-789)",
 			labelId: "phoneNumber",
 			value: phoneNumber,
 			type: "text",

@@ -16,7 +16,7 @@ const App = () => {
 			<Header
 				clearAllCallback={() => dispatch(RESET_STATE())}
 				pdfPrintCallback={() => {
-					throw new Error("Method not implemented.");
+					throw new Error("Feature in developement, currently not included in demo version.");
 				}}
 			/>
 			<main className="hero">

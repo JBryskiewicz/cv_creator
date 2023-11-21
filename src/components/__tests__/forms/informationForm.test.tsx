@@ -31,7 +31,7 @@ describe("Personal information input fields component", () => {
 		fireEvent.change(emailInput, { target: { value: "email test" } });
 		expect(store.getState().information.email).toEqual("email test");
 
-		const numberInput = screen.getByLabelText("Enter your phone number:");
+		const numberInput = screen.getByLabelText("Enter your phone number: (123-456-789)");
 		fireEvent.change(numberInput, { target: { value: "number test" } });
 		expect(store.getState().information.phoneNumber).toEqual("number test");
 	});
