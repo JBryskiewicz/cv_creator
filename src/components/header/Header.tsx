@@ -16,7 +16,7 @@ function Header({ clearAllCallback, pdfPrintCallback }: HeaderProps) {
 						{MENU_OPTIONS[0]}
 					</Button>
 				</li>
-				<li key={MENU_OPTIONS[1]} className={"header-menu-item"}>
+				<li key={MENU_OPTIONS[1]} className={"header-menu-item not-implemented"}>
 					<Button variant="contained" onClick={pdfPrintCallback}>
 						{MENU_OPTIONS[1]}
 					</Button>

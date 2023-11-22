@@ -7,5 +7,24 @@
 		display: flex;
 		gap: 3rem;
 		list-style-type: none;
+
+		.not-implemented:hover {
+			position: relative;
+
+			&::before {
+				content: ("Feature is not yet implemented");
+				position: absolute;
+				width: 120px;
+				height: 40px;
+				right: -120%;
+				color: black;
+				text-align: center;
+				font-family: Arial, Helvetica, sans-serif;
+				background-color: rgba(235,235,235, .6);
+				border: 1px solid black;
+				border-radius: .25rem;
+				padding: .25rem;
+			}
+		}
 	}
 }
