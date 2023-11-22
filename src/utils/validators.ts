@@ -16,7 +16,7 @@ export function emailValidator(field: string): boolean {
 
 export function dateValidator(field: string): boolean {
 	const pattern: RegExp =
-		/^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[0-2])\.202[3-4] - (0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[0-2])\.202[3-4]$/;
+		/^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[0-2])\.[1-9][0-9][0-9][0-9] - (0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[0-2])\.[1-9][0-9][0-9][0-9]$/;
 	if (!pattern.test(field)) {
 		return false;
 	}
